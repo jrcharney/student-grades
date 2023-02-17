@@ -20,15 +20,15 @@ const gradeSchema = new Schema({
     type: Number,
     required: [true, "Earned points is required"],
     min: [0, "Earned points must be greater than or equal to zero"],
-    //max: [100, ""]
-  }
+    // max: [100, ""]
+  },
   possible: {
     type: Number,
     required: [true, "Possible points is required"],
     min: [0, "Possible points must be greater than or equal to zero"],
-    //max: [100, ""]
+    // max: [100, ""]
     // TODO: Add custom validator to ensure possible points are gerar than earned points
-  }
+  },
 });
 
 export default gradeSchema;
