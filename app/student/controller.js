@@ -1,22 +1,34 @@
 /**
  * @file app/student/controller.js
  */
-import initClient from "../client.js";
 import Student from "./Student.js";
 
 const controller = {
   index() {
     return Student.find();
   },
-  show(id) {
+  showStudent(id) {
     return Student.findById(id);
+  },
+  async showStudentAverageGrade(id) {
+    const student = await Student.findById(id);
+    return student.averageGrade;
   },
   create(newStudent) {
     return Student.create(newStudent);
   },
+  updateName(id, newName) {
+    return Student.findByIdAndUpdate(id, { name: newName });
+  },
+  updateStudentWithNewGrade(id, newGrade) {
+    return Student.findByIdAndUpdate(id, { $push: { grades: newGrade } });
+  },
+  dropStudent(id) {
+    return Student.findByIdAndDelete(id);
+  },
 };
 
-await initClient();
+// await initClient();
 
 // TODO: Put tests in a different file.
 // TODO: What should I test it with? (Jest?)
